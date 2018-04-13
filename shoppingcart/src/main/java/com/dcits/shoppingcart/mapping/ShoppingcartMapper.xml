@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dcits.shoppingcart.dao.impl.ShoppingcartMapper">
+  <resultMap id="BaseResultMap" type="com.dcits.shoppingcart.dao.bean.Shoppingcart">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="commodityid" jdbcType="VARCHAR" property="commodityid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    username, commodityid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shoppingcart
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from shoppingcart
+    where username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dcits.shoppingcart.dao.bean.Shoppingcart">
+    insert into shoppingcart (username, commodityid)
+    values (#{username,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dcits.shoppingcart.dao.bean.Shoppingcart">
+    insert into shoppingcart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="commodityid != null">
+        commodityid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null">
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dcits.shoppingcart.dao.bean.Shoppingcart">
+    update shoppingcart
+    <set>
+      <if test="commodityid != null">
+        commodityid = #{commodityid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dcits.shoppingcart.dao.bean.Shoppingcart">
+    update shoppingcart
+    set commodityid = #{commodityid,jdbcType=VARCHAR}
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>

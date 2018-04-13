@@ -1,0 +1,29 @@
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>tar</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>src/main/resources/scripts</directory>
+			<outputDirectory>${file.separator}</outputDirectory>
+			<includes>
+				<include>start.sh</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources</directory>
+			<outputDirectory>${file.separator}</outputDirectory>
+			<includes>
+				<include>application.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>${file.separator}</outputDirectory>
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Suity Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--webfont-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close1').on('click', function(c){
+		$('.message1').fadeOut('slow', function(c){
+	  		$('.message1').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close2').on('click', function(c){
+		$('.message2').fadeOut('slow', function(c){
+	  		$('.message2').remove();
+		});
+	});	  
+});
+</script>
+
+<script>
+  $(document).ready(function(c) {
+	$('.alert-close2').on('click', function(c){
+		$('.message2').fadeOut('slow', function(c){
+	  		$('.message2').remove();
+		});
+	});	  
+});
+</script>
+<script type="text/javascript">
+	var cookie = {
+        set:function(key,val,time){//设置cookie方法
+            var date=new Date(); //获取当前时间
+            var expiresDays=time;  //将date设置为n天以后的时间
+            date.setTime(date.getTime()+expiresDays*24*3600*1000); //格式化为cookie识别的时间
+            document.cookie=key + "=" + val +";expires="+date.toGMTString();  //设置cookie
+        },
+        get:function(key){//获取cookie方法
+            /*获取cookie参数*/
+            var getCookie = document.cookie.replace(/[ ]/g,"");  //获取cookie，并且将获得的cookie格式化，去掉空格字符
+            var arrCookie = getCookie.split(";")  //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+            var tips;  //声明变量tips
+            for(var i=0;i<arrCookie.length;i++){   //使用for循环查找cookie中的tips变量
+                var arr=arrCookie[i].split("=");   //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+                if(key==arr[0]){  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+                    tips=arr[1];   //将cookie的值赋给变量tips
+                    break;   //终止for循环遍历
+                }
+            }
+            return tips;
+        },
+        delete:function(key){ //删除cookie方法
+            var date = new Date(); //获取当前时间
+            date.setTime(date.getTime()-10000); //将date设置为过去的时间
+            document.cookie = key + "=v; expires =" +date.toGMTString();//设置cookie
+        }
+    }
+</script>
+<script type="text/javascript">
+	function login(){
+		var username = loginForm.username.value;
+		var password = loginForm.password.value;
+
+		if(username ==  null || username == ''){
+			 alert("用户名不能为空");
+			 return false;
+		}
+		if(password == null || password == ''){
+			 alert("密码不能为空");
+			 return false;
+		}
+	    var result = true;
+	    $.ajax({  
+	        cache: true,  
+	        type: "POST",  
+	        url:"/portal/user/login/dologin?time="+ new Date().getTime(),  
+	        data:JSON.stringify({
+	        	"username":username,
+	        	"password":password
+	        }),
+	        async: false,  
+	        contentType: "application/json",
+	        error: function(request) {  
+	            alert("Connection error:"+request.statusText);  
+	            return false;
+	        },  
+	        success: function(data) {
+	          alert(data.statusInfo);  
+	          if(data.statusCode  ==  "Success"){
+	             cookie.set("user",username,"24");//设置为24天过期
+				 window.location.href="index.html"; 
+	          }
+	        }  
+	    });
+	}
+
+
+</script>
+</head>
+<body>
+<div class="sales">
+    <div class="container">
+	  <div class="header_top">
+   		<div class="logo">
+			<a href="index.html"><img src="images/logo.png" alt=""/></a>
+		</div>	
+		<div class="header-bottom-right">
+	       <ul class="icon1 sub-icon1 profile_img">
+					 <li><a class="active-icon c1" href="#">My Cart </a><div class="rate">3</div>
+						<ul class="sub-icon1 list">
+						  <h3>Recently added items(3)</h3>
+						  <div class="shopping_cart">
+							  <div class="cart_box">
+							   	 <div class="message">
+							   	     <div class="alert-close"> </div> 
+					                <div class="list_img"><img src="images/1.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                            <div class="cart_box">
+							   	 <div class="message1">
+							   	     <div class="alert-close1"> </div> 
+					                <div class="list_img"><img src="images/2.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                            <div class="cart_box1">
+								  <div class="message2">
+							   	     <div class="alert-close2"> </div> 
+					                <div class="list_img"><img src="images/3.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                        </div>
+	                        <div class="total">
+	                        	<div class="total_left">CartSubtotal : </div>
+	                        	<div class="total_right">$250.00</div>
+	                        	<div class="clearfix"> </div>
+	                        </div>
+                            <div class="login_buttons">
+							  <div class="check_button"><a href="checkout.html">Check out</a></div>
+							 <div class="login_button"><a href="login.html">Login</a></div>
+							  <div class="clearfix"></div>
+						    </div>
+					      <div class="clearfix"></div>
+						</ul>
+					 </li>
+		      </ul>
+              <div class="clearfix"></div>
+          </div>
+		<div class="menu">																
+			<a href="#" class="right_bt" id="activator"><img src="images/menu.png" alt=""/></a>
+				<div class="box" id="box">
+				   <div class="box_content_center">
+					   <div class="menu_box_list">
+						   <ul>
+							   <li><a href="index.html">New Arrivals</a></li>
+							   <li class="active"><a href="sales.html">Sales</a></li> 
+							   <li><a href="sales.html">Collection</a></li> 
+							   <li><a href="about.html">About Us</a></li>
+							   <li><a href="contact.html">Contact</a></li>
+						   </ul>
+						</div>
+						<a class="boxclose" id="boxclose"><img src="images/close.png" alt=""/></a>
+					  </div>                
+					</div>
+			                 <script type="text/javascript">
+								var $ = jQuery.noConflict();
+									$(function() {
+										$('#activator').click(function(){
+												$('#box').animate({'left':'0px'},500);
+										});
+										$('#boxclose').click(function(){
+												$('#box').animate({'left':'-2300px'},500);
+										});
+									});
+									$(document).ready(function(){
+									
+									//Hide (Collapse) the toggle containers on load
+									$(".toggle_container").hide(); 
+									
+									//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+									$(".trigger").click(function(){
+										$(this).toggleClass("active").next().slideToggle("slow");
+										return false; //Prevent the browser jump to the link anchor
+									});
+									
+									});
+								</script>
+			         </div> 	
+			         <div class="clearfix"></div>		
+		      </div>
+		</div>	
+</div>
+<div class="about_top">
+  <div class="container">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-9 content_right">
+		   <div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="women">
+                        Login
+                    </li>
+               </ul>
+                <ul class="previous">
+                	<li><a href="index.html">Back to Previous Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+		   </div>
+		   <div class="register">
+			  <div class="col-md-6 login-right">
+			  	<h3>REGISTERED CUSTOMERS</h3>
+				<p>If you have an account with us, please log in.</p>
+				<form id="loginForm">
+				  <div>
+					<span>UserName<label>*</label></span>
+					<input name="username" type="text"> 
+				  </div>
+				  <div>
+					<span>Password<label>*</label></span>
+					<input name="password" type="password"> 
+				  </div>
+				  <a class="forgot" href="#">Forgot Your Password?</a>
+				  <input class='acount-btn' type="button" value="Login" onclick="login();">
+			    </form>
+			   </div>
+			    <div class="col-md-6 login-left">
+			  	 <h3>NEW CUSTOMERS</h3>
+				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 <a class="acount-btn" href="register.html">Create an Account</a>
+			   </div>	
+			   <div class="clearfix"> </div>
+		   </div>
+	    </div>
+	    <div class="clearfix"> </div>   	
+    </div>   
+</div>
+<div class="footer">
+	<div class="container">
+		<img src="images/f_logo.png" alt=""/>
+		<p><a href="mailto:info@mycompany.com">info(at)suity.com</a></p>
+		<div class="copy">
+			<p>Copyright &copy; 2018.dcits All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>	
+		</div>
+		<ul class="social">
+		  <li><a href="#"> <i class="fb"> </i> </a></li>
+		  <li><a href="#"> <i class="tw"> </i> </a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>		

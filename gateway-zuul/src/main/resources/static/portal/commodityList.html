@@ -1,0 +1,89 @@
+
+<script>
+ $(document).ready(function() {
+ 	//查询商品类型列表
+ 	$.ajax({  
+	        cache: true,  
+	        type: "GET",  
+	        url:"/portal/commodity/commodity/getAllCommodityType?time="+ new Date().getTime(), 	
+	        async: false,  
+	        contentType: "application/json",
+	        error: function(request) {  
+	            alert("Connection error:"+request.error);  
+	        },  
+	        success: function(data) {  
+	           var totalType = $.parseJSON(data);
+			   for(index in totalType){
+			   	    var resultCommodityType = totalType[index];
+			   		$('#parentUL').append("<li class='item1' id='"+resultCommodityType+"'><a href='#''>"+resultCommodityType+"<img class='arrow-img' src='images/arrow.png' alt=''/></a>");
+
+			   		//查询物品简要信息
+			   		$.ajax({  
+			        cache: true,  
+			        type: "GET",  
+			        url:"/portal/commodity/commodity/getCommodity?time="+ new Date().getTime(), 
+			        data:{"commodity_type":resultCommodityType},
+			        async: false,  
+			        contentType: "application/json",
+			        error: function(request) {  
+			            alert("Connection error:"+request.error);  
+			        },  
+			        success: function(data) {  
+			           var totalItem = $.parseJSON(data);
+					   for(itemIndex in totalItem){
+					   	var now = new Date().getTime();
+				   		$("#"+resultCommodityType).append("<ul id='"+now+"' class='cute' style='display: none; overflow: hidden;'>");
+				   		$("#"+now).append("<li class='subitem1'><a href='single.html' style='font-weight:normal !important'>"+totalItem[itemIndex].COMMODITY_NAME+"</a></li>");
+					   }
+					 
+			        }  
+			    });
+			   }
+			 
+	        }  
+    });
+	  
+});
+</script>
+<div class="content_top">
+	<div class="container">
+		<div class="col-md-3">
+			<ul class="menu1">
+				<li class="item1"><a href="#" class="">商品列表</a>
+		         </li>
+			 </ul>
+			<!--initiate accordion-->
+		<script type="text/javascript">
+			$(function() {
+			    var menu1_ul = $('.menu1> li > ul'),
+			           menu1_a  = $('.menu1 > li > a');
+			    menu1_ul.hide();
+			    menu1_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu1_a.removeClass('active');
+			            menu1_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+			
+			});
+		</script>
+		<div class="box1">
+			<ul class="box1_list menu1" id="parentUL">
+				<li class="item1"><a href="#">demo1<img class="arrow-img" src="images/arrow.png" alt=""/></a>
+				   <ul class="cute" style="display: none; overflow: hidden;">
+						<li class="subitem1"><a href="single.html" style="font-weight:normal !important">Cute Kittens </a></li>
+						<li class="subitem2"><a href="single.html" style="font-weight:normal !important">Strange Stuff </a></li>
+						<li class="subitem3"><a href="single.html" style="font-weight:normal !important">Automatic Fails </a></li>
+				   </ul>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server" />
+        <module name="gateway-zuul" />
+        <module name="service-commodity" />
+        <module name="service-order" />
+        <module name="service-user" />
+        <module name="shoppingcart" />
+        <module name="swaggerUI" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-server" target="1.8" />
+      <module name="gateway-zuul" target="1.6" />
+      <module name="service-commodity" target="1.8" />
+      <module name="service-order" target="1.8" />
+      <module name="service-user" target="1.8" />
+      <module name="shoppingcart" target="1.8" />
+      <module name="SmartNew" target="1.6" />
+      <module name="swaggerUI" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

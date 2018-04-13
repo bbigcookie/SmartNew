@@ -1,0 +1,33 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: gateway-zuul
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://10.7.24.205:8761/eureka
+  instance:
+    ip-address: true
+zuul:
+  AccessFilter:
+    pre:
+      disable: true
+  DecodeFilter:
+    pre:
+      disable: true
+  routes:
+    commodity:
+      path: /portal/commodity/**
+      service-id: service-commodity
+    user:
+      path: /portal/user/**
+      service-id: service-user
+    order:
+      path: /portal/order/**
+      service-id: service-order
+    shoppingcart:
+      path: /portal/shoppingcart/**
+      service-id: shoppingcart

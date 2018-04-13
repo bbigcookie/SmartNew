@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Suity Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<!--<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>-->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<!--webfont-->
+<!--<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.message').fadeOut('slow', function(c){
+	  		$('.message').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close1').on('click', function(c){
+		$('.message1').fadeOut('slow', function(c){
+	  		$('.message1').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close2').on('click', function(c){
+		$('.message2').fadeOut('slow', function(c){
+	  		$('.message2').remove();
+		});
+	});	  
+});
+</script>
+
+<script>
+
+function register(){
+	var userName = registerFormId.username.value;
+	var email = registerFormId.email.value;
+	var password = registerFormId.password.value;
+	var rePassword = registerFormId.rePassword.value;
+	if(userName ==  null || userName == ''){
+		 alert("用户名不能为空");
+		 return false;
+	}
+	if(email ==  null || email == ''){
+		 alert("邮箱不能为空");
+		 return false;
+	}
+	if(password ==  null || password == ''){
+		 alert("密码不能为空");
+		 return false;
+	}
+	if(rePassword ==  null || rePassword == ''){
+		 alert("确认密码不能为空");
+		 return false;
+	}
+	if(password != rePassword){
+		 alert("密码不一致！请重新输入");
+		 return false;
+	}
+    var result = true;
+    $.ajax({  
+        cache: true,  
+        type: "POST",  
+        url:"/portal/user/register/registerUsingUsername?time="+ new Date().getTime(),
+        data:JSON.stringify({
+        	"username":userName,
+        	"password":password,
+        	"phoneNum":registerFormId.phoneNum.value,
+        	"nickname":registerFormId.nickname.value
+        }),
+        async: false,  
+        contentType: "application/json",
+        error: function(request) {  
+            alert("Connection error:"+request.statusText);  
+            result=false;
+        },  
+        success: function(data) {  
+          if(data.statusCode  !=  "Success"){
+            result=false;
+          }
+		  alert(data.statusInfo);
+		  window.location.href="login.html"; 
+        }  
+    });
+
+	return result;
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="sales">
+    <div class="container">
+	  <div class="header_top">
+   		<div class="logo">
+			<a href="index.html"><img src="images/logo.png" alt=""/></a>
+		</div>
+		<div class="header-bottom-right">
+	       <ul class="icon1 sub-icon1 profile_img">
+					 <li><a class="active-icon c1" href="#">My Cart </a><div class="rate">3</div>
+						<ul class="sub-icon1 list">
+						  <h3>Recently added items(3)</h3>
+						  <div class="shopping_cart">
+							  <div class="cart_box">
+							   	 <div class="message">
+							   	     <div class="alert-close"> </div> 
+					                <div class="list_img"><img src="images/1.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                            <div class="cart_box">
+							   	 <div class="message1">
+							   	     <div class="alert-close1"> </div> 
+					                <div class="list_img"><img src="images/2.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                            <div class="cart_box1">
+								  <div class="message2">
+							   	     <div class="alert-close2"> </div> 
+					                <div class="list_img"><img src="images/3.jpg" class="img-responsive" alt=""/></div>
+								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
+		                             $12.00</span></div>
+		                              <div class="clearfix"></div>
+	                              </div>
+	                            </div>
+	                        </div>
+	                        <div class="total">
+	                        	<div class="total_left">CartSubtotal : </div>
+	                        	<div class="total_right">$250.00</div>
+	                        	<div class="clearfix"> </div>
+	                        </div>
+                            <div class="login_buttons">
+							  <div class="check_button"><a href="checkout.html">Check out</a></div>
+							  <div class="login_button"><a href="login.html">Login</a></div>
+							  <div class="clearfix"></div>
+						    </div>
+					      <div class="clearfix"></div>
+						</ul>
+					 </li>
+		      </ul>
+              <div class="clearfix"></div>
+          </div>
+        <div class="header-bottom-right">
+			<a class="active-icon c1" href="login.html">Login</a>
+		</div>	
+		<div class="menu">																
+			<a href="#" class="right_bt" id="activator"><img src="images/menu.png" alt=""/></a>
+				<div class="box" id="box">
+				   <div class="box_content_center">
+					   <div class="menu_box_list">
+						   <ul>
+							   <li><a href="index.html">New Arrivals</a></li>
+							   <li class="active"><a href="sales.html">Sales</a></li> 
+							   <li><a href="sales.html">Collection</a></li> 
+							   <li><a href="about.html">About Us</a></li>
+							   <li><a href="contact.html">Contact</a></li>
+						   </ul>
+						</div>
+						<a class="boxclose" id="boxclose"><img src="images/close.png" alt=""/></a>
+					  </div>                
+					</div>
+			                 <script type="text/javascript">
+								var $ = jQuery.noConflict();
+									$(function() {
+										$('#activator').click(function(){
+												$('#box').animate({'left':'0px'},500);
+										});
+										$('#boxclose').click(function(){
+												$('#box').animate({'left':'-2300px'},500);
+										});
+									});
+									$(document).ready(function(){
+									
+									//Hide (Collapse) the toggle containers on load
+									$(".toggle_container").hide(); 
+									
+									//Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+									$(".trigger").click(function(){
+										$(this).toggleClass("active").next().slideToggle("slow");
+										return false; //Prevent the browser jump to the link anchor
+									});
+									
+									});
+								</script>
+			         </div> 	
+			         <div class="clearfix"></div>		
+		      </div>
+		</div>	
+</div>
+<div class="about_top">
+  <div class="container">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-9 content_right">
+		   <div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                    <li class="home">
+                       <a href="index.html" title="Go to Home Page">Home</a>&nbsp;
+                       <span>&gt;</span>
+                    </li>
+                    <li class="women">
+                        Login
+                    </li>
+               </ul>
+                <ul class="previous">
+                	<li><a href="index.html">Back to Previous Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+		   </div>
+		   <div class="register">
+		  	  <form id="registerFormId" > 
+				 <div class="register-top-grid">
+					<h3>PERSONAL INFORMATION</h3>
+					 <div>
+						<span>UserName<label>*</label></span>
+						<input name="username" type="text"> 
+					 </div>
+					 <div>
+						 <span>Email Address<label>*</label></span>
+						 <input name="email" type="text"> 
+					 </div>
+					 <div>
+						<span>NickName</span>
+						<input name="nickname" type="text"> 
+					 </div>
+					 <div>
+						 <span>PhoneNum</span>
+						 <input name="phoneNum" type="text"> 
+					 </div>
+					 <div class="clearfix"> </div>
+					   <a class="news-letter" href="#">
+						 <label class="checkbox" style="display:none"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+					   </a>
+					 </div>
+				     <div class="register-bottom-grid">
+						    <h3>LOGIN INFORMATION</h3>
+							 <div>
+								<span>Password<label>*</label></span>
+								<input name="password" type="password">
+							 </div>
+							 <div>
+								<span>Confirm Password<label>*</label></span>
+								<input name="rePassword" type="password">
+							 </div>
+							 <div class="clearfix"> </div>
+					 </div>
+		
+				<div class="clearfix"> </div>
+				<div class="register-but">
+				   
+					   <input class='acount-btn' type="button" value="submit" onclick="register();">
+					   <div class="clearfix"> </div>
+				 
+				</div>
+				  </form>
+		   </div>
+	    </div>
+	    <div class="clearfix"> </div>   	
+    </div>   
+</div>
+<div class="footer">
+	<div class="container">
+		<img src="images/f_logo.png" alt=""/>
+		<p><a href="mailto:info@mycompany.com">info(at)suity.com</a></p>
+		<div class="copy">
+			<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>	
+		</div>
+		<ul class="social">
+		  <li><a href="#"> <i class="fb"> </i> </a></li>
+		  <li><a href="#"> <i class="tw"> </i> </a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>		

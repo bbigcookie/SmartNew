@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=swaggerUI/src/main/resources/assets/drore-document-ui/drore/DApiUI.js,swaggerUI/src/main/resources/assets/drore-document-ui/drore/DUI.js,swaggerUI/target/classes/META-INF/resources/assets/drore-document-ui/drore/DUI.js,swaggerUI/target/classes/META-INF/resources/assets/drore-document-ui/drore/DApiUI.js
+validator.Unchecked=

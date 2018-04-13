@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SmartNew.iml" filepath="$PROJECT_DIR$/SmartNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-zuul/gateway-zuul.iml" filepath="$PROJECT_DIR$/gateway-zuul/gateway-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-commodity/service-commodity.iml" filepath="$PROJECT_DIR$/service-commodity/service-commodity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order/service-order.iml" filepath="$PROJECT_DIR$/service-order/service-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-user/service-user.iml" filepath="$PROJECT_DIR$/service-user/service-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shoppingcart/shoppingcart.iml" filepath="$PROJECT_DIR$/shoppingcart/shoppingcart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swaggerUI/swaggerUI.iml" filepath="$PROJECT_DIR$/swaggerUI/swaggerUI.iml" />
+    </modules>
+  </component>
+</project>

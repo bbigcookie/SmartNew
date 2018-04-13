@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户Mapper文件 -->
+<mapper namespace="mybatis.mapper.OrderMapper">
+    <resultMap type="com.dcits.order.model.Order"
+               id="orderMap">
+        <result property="order_no" column="order_no"/>
+        <result property="userName" column="userName"/>
+        <result property="commodityName" column="commodityName"/>
+        <result property="commodityPrice" column="commodityPrice"/>
+    </resultMap>
+
+    <insert id="addOrder" parameterType="com.dcits.order.model.Order">
+        insert into `Order` values(#{order_no},#{userName},#{commodityName},#{commodityPrice})
+    </insert>
+
+    <delete id="deleteOrderByPrimaryKey" parameterType="java.lang.String">
+        delete from `Order` where order_no = #{order_no}
+    </delete>
+
+    <update id="updateOrder" parameterType="com.dcits.order.model.Order">
+        update `Order` set
+        where order_no=#{order_no}
+    </update>
+
+    <select id="getOrderByPrimaryKey" parameterType="java.lang.String" resultMap="orderMap">
+        select * from `Order` where order_no = #{order_no}
+    </select>
+</mapper>

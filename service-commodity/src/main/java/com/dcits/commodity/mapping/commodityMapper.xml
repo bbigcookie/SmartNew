@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commodityMapping">
+
+    <select id="getCommodityList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+     	SELECT * FROM COMMODITY co WHERE 1=1
+		<if test="commodity_id != null and commodity_id != '' ">
+			and co.COMMODITY_ID like '%${commodity_id}%'
+		</if>
+		<if test="commodity_name != null and commodity_name != '' ">
+			and co.COMMODITY_NAME like '%${commodity_name}%'
+		</if>
+		<if test=" commodity_type != null and commodity_type != '' ">
+			and co.COMMODITY_TYPE like '%${commodity_type}%'
+		</if>
+		<if test=" commodity_price != null and commodity_price != '' ">
+			and co.COMMODITY_PRICE like '%${commodity_price}%'
+		</if>
+    </select>
+    <select id="getCommodityDetail" resultType="java.util.HashMap" parameterType="java.lang.String">
+     	SELECT * FROM COMMODITY_DETAIL co WHERE co.COMMODITY_ID = #{commodity_id}
+    </select>
+    
+    <select id="getAllCommodityType" resultType="java.lang.String">
+     	SELECT DISTINCT(co.COMMODITY_TYPE) FROM COMMODITY co
+    </select>
+    
+</mapper>

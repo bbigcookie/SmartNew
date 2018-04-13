@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="remarkMapping">
+
+    <select id="getRemarkList" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+     	SELECT * FROM REMARK re WHERE 1=1
+		<if test="commodity_id != null and commodity_id != '' ">
+			and re.COMMODITY_ID = #{commodity_id}
+		</if>
+		<if test=" user_id != null and user_id != '' ">
+			and re.USER_ID = #{user_id}
+		</if>
+		<if test=" remark_id != null and remark_id != '' ">
+			and re.REMARK_ID = #{remark_id}
+		</if>
+    </select>
+    
+    <insert id="addRemark" parameterType="java.util.HashMap">
+	    INSERT INTO
+	    	REMARK(REMARK_ID,COMMODITY_ID,USER_ID,REMARK_DESC,REMARK_CREATETIME) 
+	    VALUES(#{remark_id},#{commodity_id},#{user_id},#{REMARK_desc},now()) 
+    </insert>
+    
+    <delete id="delteRemark" parameterType="java.util.HashMap">
+	    DELETE FROM 
+	    	REMARK
+	    WHERE USER_ID=#{user_id}
+	    <if test=" remark_ids != null and remark_ids != '' ">
+			and REMARK_ID in
+			<foreach collection="remark_ids" index="index" item="remark_id"
+				open="(" separator="," close=")">
+				#{remark_id}
+			</foreach>
+		</if>
+    </delete>
+</mapper>
